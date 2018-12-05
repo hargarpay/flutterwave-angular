@@ -1,0 +1,31 @@
+<div class="form-wrapper">
+    <div class="form-header bg-orange">
+        <h3 class="text-uppercase text-white bg-orange pmarginless padding-10">
+            BOOK a TICKET
+        </h3>
+    </div>
+    <div class="form-content bg-white padding-20">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="adult">Adult:</label>
+                    <input type="number" class="form-control" placeholder="Adult" (keyup)="onChangeHandler($event)" />
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <p>{{amount}}</p>
+                </div>
+            </div>
+            <div class="
+                        col-sm-12">
+                <button type="button" [disabled]="active" class="btn btn-orange btn-round btn-block text-uppercase"
+                    angular-rave [PBFPubKey]="'FLWPUBK-3936ae0e7f67dd4338ee36feacaf5b07-X'" [customer_email]="'ifeoluwa.odewale@gmail.com'"
+                    [customer_phone]="'08090909090'" [amount]="amount" [custom_title]="'Bill Payment'" [txref]="'USR1295950'"
+                    (callback)="paymentSuccess($event)" (close)="paymentFailure()">
+                    Book Now </button>
+            </div>
+        </div>
+    </div>
+</div>

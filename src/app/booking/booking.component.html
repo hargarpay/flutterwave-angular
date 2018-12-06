@@ -8,8 +8,61 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" class="form-control" name="firstname" id="firstname" placeholder="First Name"
+                        [value]="firstname" (input)="updateValue($event)">
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Last Name"
+                        [value]="lastname" (input)="updateValue($event)">
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Email" [value]="email"
+                        (input)="updateValue($event)">
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number" [value]="phone"
+                        (input)="updateValue($event)">
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="travellingFrom">Travelling From:</label>
+                    <select class="form-control" id="travellingFrom">
+                        <option placeholder>Departure Terminal</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="travellingTo">Travelling To:</label>
+                    <select class="form-control" id="travellingTo">
+                        <option placeholder>Destination Terminal</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
                     <label for="adult">Adult:</label>
-                    <input type="number" class="form-control" placeholder="Adult" (keyup)="onChangeHandler($event)" />
+                    <select class="form-control" id="adult">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
                 </div>
             </div>
             <div class="col-sm-12">
@@ -21,9 +74,9 @@
             <div class="
                         col-sm-12">
                 <button type="button" [disabled]="active" class="btn btn-orange btn-round btn-block text-uppercase"
-                    angular-rave [PBFPubKey]="'FLWPUBK-3936ae0e7f67dd4338ee36feacaf5b07-X'" [customer_email]="'ifeoluwa.odewale@gmail.com'"
-                    [customer_phone]="'08090909090'" [amount]="amount" [custom_title]="'Bill Payment'" [txref]="'USR1295950'"
-                    (callback)="paymentSuccess($event)" (close)="paymentFailure()">
+                    angular-rave [PBFPubKey]="'FLWPUBK-3936ae0e7f67dd4338ee36feacaf5b07-X'" [customer_email]="email"
+                    [customer_phone]="phone" [customer_firstname]="firstname" [customer_lastname]="lastname" [amount]="amount"
+                    [custom_title]="'Bill Payment'" [txref]="'USR1295950'" (callback)="paymentSuccess($event)" (close)="paymentFailure()">
                     Book Now </button>
             </div>
         </div>

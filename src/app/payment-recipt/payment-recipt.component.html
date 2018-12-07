@@ -38,8 +38,14 @@
             </div>
             <div class="col-sm-12">
                 <div class="form-group">
-                    <label for="amount">Amount</label>
-                    <p>{{reciptData.data.tx.currency+" "+reciptData.data.tx.charge_amount}}</p>
+                    <label for="adult">Departure Date:</label>
+                    <p>{{reciptData.departureDate}}</p>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="amount">Amount:</label>
+                    <p>{{reciptData.data.tx.currency+" "+reciptData.data.tx.amount}}</p>
                 </div>
             </div>
         </div>

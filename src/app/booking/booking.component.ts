@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import TinyDatePicker from 'tiny-date-picker';
 import Choices from 'choices.js';
 import { data } from './data';
 
@@ -21,11 +22,14 @@ export class BookingComponent implements OnInit {
     departure: String = '';
     destination: String = '';
     bookingRoute: String = '';
+    departureDate: String = '';
+    seatNumber: [];
 
     constructor() { }
 
     ngOnInit() {
         this.initialSelectFields();
+        TinyDatePicker(document.getElementById('dateDepartue'));
         console.log(this.data);
     }
 
@@ -105,10 +109,19 @@ export class BookingComponent implements OnInit {
         this[event.target.name] = event.target.value;
     }
 
+    getDepartureDate(event) {
+        this.departureDate = event.target.value;
+    }
+
+    getSelectedSeats(event) {
+        console.log(event);
+    }
+
 
     paymentSuccess(evt) {
         evt.bookingRoute = this.bookingRoute;
         evt.numberOfBooking = this.number_of_booking;
+        evt.departureDate = this.departureDate;
         this.raveDataEmit.emit(evt);
     }
 

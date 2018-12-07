@@ -6,35 +6,35 @@
     </div>
     <div class="form-content bg-white padding-20">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-6">
                 <div class="form-group">
                     <label for="firstname">First Name</label>
                     <input type="text" class="form-control" name="firstname" id="firstname" placeholder="First Name"
                         [value]="firstname" (input)="updateValue($event)">
                 </div>
             </div>
-            <div class="col-sm-12">
+            <div class="col-sm-6">
                 <div class="form-group">
                     <label for="lastname">Last Name</label>
                     <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Last Name"
                         [value]="lastname" (input)="updateValue($event)">
                 </div>
             </div>
-            <div class="col-sm-12">
+            <div class="col-sm-6">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="text" class="form-control" name="email" id="email" placeholder="Email" [value]="email"
                         (input)="updateValue($event)">
                 </div>
             </div>
-            <div class="col-sm-12">
+            <div class="col-sm-6">
                 <div class="form-group">
                     <label for="phone">Phone Number</label>
                     <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number" [value]="phone"
                         (input)="updateValue($event)">
                 </div>
             </div>
-            <div class="col-sm-12">
+            <div class="col-sm-6">
                 <div class="form-group">
                     <label for="travellingFrom">Travelling From:</label>
                     <select class="form-control" id="travellingFrom">
@@ -42,7 +42,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-sm-12">
+            <div class="col-sm-6">
                 <div class="form-group">
                     <label for="travellingTo">Travelling To:</label>
                     <select class="form-control" id="travellingTo">
@@ -50,7 +50,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-sm-12">
+            <div class="col-sm-6">
                 <div class="form-group">
                     <label for="adult">Adult:</label>
                     <select class="form-control" id="adult">
@@ -67,12 +67,23 @@
             </div>
             <div class="col-sm-12">
                 <div class="form-group">
+                    <label for="dateDepartue">Departure Date</label>
+                    <input type="text" class="form-control" id="dateDepartue" placeholder="Departure Date" (change)="getDepartureDate($event)">
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
                     <label for="amount">Amount</label>
                     <p>{{amount}}</p>
                 </div>
             </div>
-            <div class="
-                        col-sm-12">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="amount">Seat Number</label>
+                    <app-seat-number [numberOfSeat]="number_of_booking" (seatEvent)="getSelectedSeats($event)"></app-seat-number>
+                </div>
+            </div>
+            <div class="col-sm-12">
                 <button type="button" [disabled]="active" class="btn btn-orange btn-round btn-block text-uppercase"
                     angular-rave [PBFPubKey]="'FLWPUBK-3936ae0e7f67dd4338ee36feacaf5b07-X'" [customer_email]="email"
                     [customer_phone]="phone" [customer_firstname]="firstname" [customer_lastname]="lastname" [amount]="amount"

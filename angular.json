@@ -29,7 +29,8 @@
                         "styles": [
                             "src/styles.scss",
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
-                            "node_modules/choices.js/public/assets/styles/choices.min.css"
+                            "node_modules/choices.js/public/assets/styles/choices.min.css",
+                            "node_modules/tiny-date-picker/tiny-date-picker.min.css"
                         ],
                         "scripts": []
                     },

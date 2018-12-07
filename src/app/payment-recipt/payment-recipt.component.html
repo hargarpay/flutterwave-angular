@@ -1,0 +1,47 @@
+<div class="form-wrapper">
+    <div class="form-header bg-orange">
+        <h3 class="text-uppercase text-white bg-orange pmarginless padding-10">
+            TICKET RECEIPT
+        </h3>
+    </div>
+    <div class="form-content bg-white padding-20">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="fullname">Fullname</label>
+                    <p>{{reciptData.data.tx.customer.fullName}}</p>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <p>{{reciptData.data.tx.customer.email}}</p>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <p>{{reciptData.data.tx.customer.phone}}</p>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="travellingFrom">Travelling Route:</label>
+                    <p>{{reciptData.bookingRoute}}</p>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="adult">Number of Booking:</label>
+                    <p>{{reciptData.numberOfBooking}}</p>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <p>{{reciptData.data.tx.currency+" "+reciptData.data.tx.charge_amount}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,9 +2,11 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <app-booking></app-booking>
+            <app-booking (raveDataEmit)="getRaveDataResponse($event)"></app-booking>
         </div>
-        <div class="col"></div>
+        <div class="col">
+            <app-payment-recipt [reciptData]="raveDataResponse" *ngIf="reciptActive"></app-payment-recipt>
+        </div>
     </div>
 </div>
 <router-outlet></router-outlet>

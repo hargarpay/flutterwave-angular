@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import Choices from 'choices.js';
+import { data } from './data';
 
 @Component({
     selector: 'app-booking',
@@ -7,6 +8,8 @@ import Choices from 'choices.js';
     styleUrls: ['./booking.component.scss']
 })
 export class BookingComponent implements OnInit {
+    data = data;
+    @Output() raveDataEmit = new EventEmitter<{}>();
     amount: Number = 0;
     amount_per_person: Number = 0;
     number_of_booking: Number = 1;
@@ -15,56 +18,15 @@ export class BookingComponent implements OnInit {
     lastname: String = '';
     email: String = '';
     phone: String = '';
-    data = [
-        {
-            from: 'lagos',
-            to: [
-                {
-                    location: 'akure',
-                    amount: '2500'
-                },
-                {
-                    location: 'jos',
-                    amount: '6500'
-                },
-                {
-                    location: 'enugu',
-                    amount: '7000'
-                }
-            ]
-        },
-        {
-            from: 'enugu',
-            to: [
-                {
-                    location: 'oyo',
-                    amount: '7600'
-                },
-                {
-                    location: 'imo',
-                    amount: '500'
-                }
-            ]
-        },
-        {
-            from: 'ogun',
-            to: [
-                {
-                    location: 'ibadan',
-                    amount: '4500'
-                },
-                {
-                    location: 'kwara',
-                    amount: '8500'
-                }
-            ]
-        }
-    ];
+    departure: String = '';
+    destination: String = '';
+    bookingRoute: String = '';
 
     constructor() { }
 
     ngOnInit() {
         this.initialSelectFields();
+        console.log(this.data);
     }
 
     onChangeHandler(evt) {
@@ -97,8 +59,8 @@ export class BookingComponent implements OnInit {
 
         travellingFrom.addEventListener('addItem', (event) => {
             // do something creative here...
-            const departure = (<CustomEvent>event).detail.value;
-            const [filtered_route] = this.data.filter(datum => datum.from === departure);
+            this.departure = (<CustomEvent>event).detail.value;
+            const [filtered_route] = this.data.filter(datum => datum.from === this.departure);
             if (filtered_route !== undefined) {
                 const destination_route = filtered_route.to;
                 choicesTo
@@ -116,7 +78,9 @@ export class BookingComponent implements OnInit {
         }, false);
 
         travellingTo.addEventListener('addItem', (evt) => {
+            this.destination = (<CustomEvent>evt).detail.label;
             this.amount_per_person = parseInt((<CustomEvent>evt).detail.value, 10);
+            this.bookingRoute = this.departure.replace(/^\w/, c => c.toUpperCase()) + ' to ' + this.destination;
             this.currentAmount(this.amount_per_person, this.number_of_booking);
         }, false);
 
@@ -143,7 +107,9 @@ export class BookingComponent implements OnInit {
 
 
     paymentSuccess(evt) {
-        console.log(evt);
+        evt.bookingRoute = this.bookingRoute;
+        evt.numberOfBooking = this.number_of_booking;
+        this.raveDataEmit.emit(evt);
     }
 
     paymentFailure() {

@@ -5,11 +5,13 @@ import { AngularRaveModule } from 'angular-rave';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookingComponent } from './booking/booking.component';
+import { PaymentReciptComponent } from './payment-recipt/payment-recipt.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        BookingComponent
+        BookingComponent,
+        PaymentReciptComponent
     ],
     imports: [
         BrowserModule,

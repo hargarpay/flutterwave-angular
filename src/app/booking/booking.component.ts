@@ -23,7 +23,8 @@ export class BookingComponent implements OnInit {
     destination: String = '';
     bookingRoute: String = '';
     departureDate: String = '';
-    seatNumber: [];
+    seatNumber = [];
+    seatNumberString: String = '';
 
     constructor() { }
 
@@ -98,23 +99,26 @@ export class BookingComponent implements OnInit {
 
     currentAmount(amount, person) {
         this.amount = amount * person;
-        if (this.amount > 0) {
-            this.active = false;
-        } else {
-            this.active = true;
-        }
+        this.changeButtonStatus();
     }
 
     updateValue(event) {
         this[event.target.name] = event.target.value;
+        this.changeButtonStatus();
     }
 
     getDepartureDate(event) {
         this.departureDate = event.target.value;
+        this.changeButtonStatus();
     }
 
     getSelectedSeats(event) {
-        console.log(event);
+        const replacement = ' and';
+        this.seatNumber = Array.from(event);
+        this.seatNumberString = this.seatNumber
+            .join(', ')
+            .replace(/,([^,]*)$/, replacement + '$1');
+        this.changeButtonStatus();
     }
 
 
@@ -122,7 +126,27 @@ export class BookingComponent implements OnInit {
         evt.bookingRoute = this.bookingRoute;
         evt.numberOfBooking = this.number_of_booking;
         evt.departureDate = this.departureDate;
+        evt.seatNumberString = this.seatNumberString;
         this.raveDataEmit.emit(evt);
+    }
+
+    changeButtonStatus() {
+        if (
+            this.amount > 0
+            && this.firstname.length > 2
+            && this.validateEmail(this.email)
+            && this.phone.length > 7
+            && this.departureDate.includes('/')
+            && this.number_of_booking === this.seatNumber.length
+        ) {
+            this.active = false;
+        } else {
+            this.active = true;
+        }
+    }
+
+    validateEmail(email) {
+        return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
     }
 
     paymentFailure() {

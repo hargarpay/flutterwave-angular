@@ -14,7 +14,7 @@ export class BookingComponent implements OnInit {
     amount: Number = 0;
     amount_per_person: Number = 0;
     number_of_booking: Number = 1;
-    active: Boolean = true;
+    active = true;
     firstname: String = '';
     lastname: String = '';
     email: String = '';
@@ -123,11 +123,13 @@ export class BookingComponent implements OnInit {
 
 
     paymentSuccess(evt) {
-        evt.bookingRoute = this.bookingRoute;
-        evt.numberOfBooking = this.number_of_booking;
-        evt.departureDate = this.departureDate;
-        evt.seatNumberString = this.seatNumberString;
-        this.raveDataEmit.emit(evt);
+        if (evt.success) {
+            evt.bookingRoute = this.bookingRoute;
+            evt.numberOfBooking = this.number_of_booking;
+            evt.departureDate = this.departureDate;
+            evt.seatNumberString = this.seatNumberString;
+            this.raveDataEmit.emit(evt);
+        }
     }
 
     changeButtonStatus() {
@@ -150,7 +152,20 @@ export class BookingComponent implements OnInit {
     }
 
     paymentFailure() {
-        console.log('This has close');
+        this.amount = 0;
+        this.amount_per_person = 0;
+        this.number_of_booking = 1;
+        this.active = true;
+        this.firstname = '';
+        this.lastname = '';
+        this.email = '';
+        this.phone = '';
+        this.departure = '';
+        this.destination = '';
+        this.bookingRoute = '';
+        this.departureDate = '';
+        this.seatNumber = [];
+        this.seatNumberString = '';
     }
 
 }

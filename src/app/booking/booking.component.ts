@@ -25,6 +25,7 @@ export class BookingComponent implements OnInit {
     departureDate: String = '';
     seatNumber = [];
     seatNumberString: String = '';
+    txRefNum: String = Math.random().toString(36).substr(2, 9);
 
     constructor() { }
 
@@ -166,6 +167,7 @@ export class BookingComponent implements OnInit {
         this.departureDate = '';
         this.seatNumber = [];
         this.seatNumberString = '';
+        this.txRefNum = Math.random().toString(36).substr(2, 9);
     }
 
 }

@@ -87,8 +87,7 @@
                 <button type="button" [disabled]="active" class="btn btn-orange btn-round btn-block text-uppercase"
                     angular-rave [PBFPubKey]="'FLWPUBK-3936ae0e7f67dd4338ee36feacaf5b07-X'" [customer_email]="email"
                     [customer_phone]="phone" [customer_firstname]="firstname" [customer_lastname]="lastname" [amount]="amount"
-                    [custom_title]="'Bill Payment'" [txref]="'USR1295950'" (callback)="paymentSuccess($event)"
-                    (onclose)="paymentFailure()">
+                    [custom_title]="'Bill Payment'" [txref]="txRefNum" (callback)="paymentSuccess($event)" (onclose)="paymentFailure()">
                     Book Now </button>
             </div>
         </div>

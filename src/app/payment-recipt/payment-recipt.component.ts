@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DataCenterService } from '../data-center.service';
 
 @Component({
     selector: 'app-payment-recipt',
@@ -9,9 +10,10 @@ export class PaymentReciptComponent implements OnInit {
 
     @Input() reciptData: {};
 
-    constructor() { }
+    constructor(private dataCenter: DataCenterService) { }
 
     ngOnInit() {
+        this.getCurrentDataResponse();
     }
 
     getCurrentDataResponse() {

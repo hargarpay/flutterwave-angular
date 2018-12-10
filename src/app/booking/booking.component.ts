@@ -1,7 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import TinyDatePicker from 'tiny-date-picker';
 import Choices from 'choices.js';
 import { data } from './data';
+import { DataCenterService } from '../data-center.service';
 
 @Component({
     selector: 'app-booking',
@@ -10,7 +11,6 @@ import { data } from './data';
 })
 export class BookingComponent implements OnInit {
     data = data;
-    @Output() raveDataEmit = new EventEmitter<{}>();
     amount: Number = 0;
     amount_per_person: Number = 0;
     number_of_booking: Number = 1;
@@ -27,7 +27,7 @@ export class BookingComponent implements OnInit {
     seatNumberString: String = '';
     txRefNum: String = Math.random().toString(36).substr(2, 9);
 
-    constructor() { }
+    constructor(private dataCenter: DataCenterService) { }
 
     ngOnInit() {
         this.initialSelectFields();
@@ -129,7 +129,7 @@ export class BookingComponent implements OnInit {
             evt.numberOfBooking = this.number_of_booking;
             evt.departureDate = this.departureDate;
             evt.seatNumberString = this.seatNumberString;
-            this.raveDataEmit.emit(evt);
+            this.dataCenter.dataRaveEvent.emit(evt);
         }
     }
 

@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { BookingComponent } from './booking/booking.component';
 import { PaymentReciptComponent } from './payment-recipt/payment-recipt.component';
 import { SeatNumberComponent } from './booking/seat-number/seat-number.component';
+import { DataCenterService } from './data-center.service';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,7 @@ import { SeatNumberComponent } from './booking/seat-number/seat-number.component
         AppRoutingModule,
         AngularRaveModule
     ],
-    providers: [],
+    providers: [DataCenterService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
